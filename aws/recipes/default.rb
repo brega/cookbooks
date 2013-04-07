@@ -4,5 +4,5 @@ end
 
 execute 'pip' do
   command 'pip install awscli'
-  user 'deploy'
+  user 'root'
 end
