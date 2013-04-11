@@ -7,15 +7,15 @@
 
 define :custom_env_template do
   
-  template "#{params[:deploy][:deploy_to]}/shared/config/application.yml" do
+  template "#{release_path}/config/application.yml" do
     source "application.yml.erb"
     owner params[:deploy][:user]
     group params[:deploy][:group]
     mode "0660"
     variables :env => params[:env]
-    #notifies :run, resources(:execute => "restart Rails app #{params[:application]}")
+    notifies :run, resources(:execute => "restart Rails app #{params[:application]}")
 
-    only_if { File.exists?("#{params[:deploy][:deploy_to]}/shared/config") }
+    only_if { File.exists?("#{release_path}/config") }
   end
   
 end
