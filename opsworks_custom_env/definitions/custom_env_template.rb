@@ -1,4 +1,4 @@
-define :custom_env_template, app_name: nil, release_path: nil do
+define :custom_env_template, :app_name => nil, :release_path => nil do
   app_name = params[:app_name]
   release_path = params[:release_path]
   env = node[:custom_env][app_name] rescue {}
